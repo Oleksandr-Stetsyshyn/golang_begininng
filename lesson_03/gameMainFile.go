@@ -1,11 +1,11 @@
-package main
+package game
 
 import (
 	"fmt"
-	"lesson_3/env"
+	"golang_beginning/lesson_03/env"
 )
 
-func main() {
+func Game() {
 	fmt.Println("Вітаємо у грі!")
 	fmt.Println("Ви опинилися в лісі. Що ви будете робити?")
 	fmt.Println("1. Піти вглиб лісу")
@@ -71,9 +71,9 @@ func main() {
 
 				for password != secret.SecretPassword {
 					fmt.Scanln(&password)
-			if password != secret.SecretPassword {
-				fmt.Println("Неправильний пароль. Спробуйте ще раз.")
-			}
+					if password != secret.SecretPassword {
+						fmt.Println("Неправильний пароль. Спробуйте ще раз.")
+					}
 				}
 				fmt.Println("Ви відкрили сейф і знайшли там скарби!")
 				goto exit
@@ -91,5 +91,4 @@ func main() {
 	}
 exit:
 	fmt.Println("Гра завершена. Вас з'їли комарі.")
-
 }
