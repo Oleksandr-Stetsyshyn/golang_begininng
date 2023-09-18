@@ -6,14 +6,14 @@ import (
 )
 
 func Game() {
-	fmt.Println("Вітаємо у грі!")
+	fmt.Println("------ Homework 3, task: Game -------")
 	fmt.Println("Ви опинилися в лісі. Що ви будете робити?")
 	fmt.Println("1. Піти вглиб лісу")
 	fmt.Println("2. Повернутися назад")
 	fmt.Println("3. Знайти місце для ночівлі")
-
 	var choice int
 	fmt.Scanln(&choice)
+
 	switch choice {
 	case 1:
 		fmt.Println("Ви зустріли ведмедя. Що ви будете робити?")
@@ -89,6 +89,7 @@ func Game() {
 	default:
 		goto exit
 	}
+
 exit:
 	fmt.Println("Гра завершена. Вас з'їли комарі.")
 }
