@@ -15,7 +15,6 @@ func TextSearcher() {
 	var linesSlice []string
 	exitWord := "exit"
 	for {
-
 		fmt.Println("Please enter a line of text, if you want to finish enter ", exitWord)
 		line, err := reader.ReadString('\n')
 		if err != nil {
@@ -47,7 +46,7 @@ func TextSearcher() {
 	fmt.Println("Enter the search word:")
 	fmt.Scan(&searchWord)
 
-	readFile, err := os.Open("output.txt") 
+	readFile, err := os.Open("output.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
