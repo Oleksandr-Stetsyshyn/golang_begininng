@@ -8,8 +8,7 @@ import (
 	"golang_beginning/lesson_05"
 	postOffice "golang_beginning/lesson_06/post"
 	vehicle "golang_beginning/lesson_06/vehicle"
-
-
+	"golang_beginning/lesson_07"
 )
 
 func main() {
@@ -21,6 +20,7 @@ func main() {
 	fmt.Println("4. Arrays and slices")
 	fmt.Println("5. Maps")
 	fmt.Println("6. Interfaces")
+	fmt.Println("7. Goroutines")
 
 	fmt.Scanln(&runLessonNumber)
 
@@ -59,8 +59,11 @@ func main() {
 		case 2:
 			vehicle.GoToRoute()
 		}
-
+	case 7:
+		goroutines.RunGoroutines()
 	default:
+
 		fmt.Println("This homework is not ready yet.")
 	}
+	
 }
