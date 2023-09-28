@@ -6,6 +6,10 @@ import (
 	"golang_beginning/lesson_03"
 	"golang_beginning/lesson_04"
 	"golang_beginning/lesson_05"
+	postOffice "golang_beginning/lesson_06/post"
+	vehicle "golang_beginning/lesson_06/vehicle"
+
+
 )
 
 func main() {
@@ -16,6 +20,7 @@ func main() {
 	fmt.Println("3. Control Statements and Loops")
 	fmt.Println("4. Arrays and slices")
 	fmt.Println("5. Maps")
+	fmt.Println("6. Interfaces")
 
 	fmt.Scanln(&runLessonNumber)
 
@@ -41,6 +46,20 @@ func main() {
 		}
 	case 5:
 		ticTacToe.StartGame()
+	case 6:
+		var selectTask int
+		fmt.Println("Select task rom homework 6")
+		fmt.Println("1. Post office")
+		fmt.Println("2. Vehicle")
+		fmt.Scanln(&selectTask)
+
+		switch selectTask {
+		case 1:
+			postOffice.Office()
+		case 2:
+			vehicle.GoToRoute()
+		}
+
 	default:
 		fmt.Println("This homework is not ready yet.")
 	}

@@ -2,7 +2,6 @@ package ticTacToe
 
 import (
 	"fmt"
-
 	"strings"
 )
 
@@ -105,5 +104,5 @@ func StartGame() {
 	}
 	clearBoard()
 	board.Print()
-	fmt.Printf("🎉🎊 Player 2 %s won. 🎊🎉", winner)
+	fmt.Printf("🎉🎊 Player %s won. 🎊🎉", winner)
 }
