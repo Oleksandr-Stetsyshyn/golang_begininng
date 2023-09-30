@@ -2,6 +2,7 @@ package vehicleStructs
 
 type Car struct {
 	Transport
+	
 }
 
 func (car *Car) Move() bool {

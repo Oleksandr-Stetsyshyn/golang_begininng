@@ -12,18 +12,18 @@ import (
 )
 
 func main() {
-	var runLessonNumber int
+	var runLessonNumber int = 7
 	fmt.Println("Please select a homework number: ")
-	fmt.Println("1. Hello world")
-	fmt.Println("2. Structs")
-	fmt.Println("3. Control Statements and Loops")
-	fmt.Println("4. Arrays and slices")
-	fmt.Println("5. Maps")
-	fmt.Println("6. Interfaces")
-	fmt.Println("7. Goroutines")
+	// fmt.Println("1. Hello world")
+	// fmt.Println("2. Structs")
+	// fmt.Println("3. Control Statements and Loops")
+	// fmt.Println("4. Arrays and slices")
+	// fmt.Println("5. Maps")
+	// fmt.Println("6. Interfaces")
+	// fmt.Println("7. Goroutines")
 
-	fmt.Scanln(&runLessonNumber)
-
+	// fmt.Scanln(&runLessonNumber)
+	fmt.Print("\033[H\033[2J")
 	switch runLessonNumber {
 	case 1:
 		fmt.Println("Hello world!")
@@ -60,10 +60,21 @@ func main() {
 			vehicle.GoToRoute()
 		}
 	case 7:
-		goroutines.RunGoroutines()
+		var selectTask int
+		fmt.Println("Select task rom homework 7")
+		fmt.Println("1. Calculate average")
+		fmt.Println("2. Calculate min and max")
+		fmt.Scanln(&selectTask)
+		switch selectTask {
+		case 1:
+			goroutines.RunCalculateAverage()
+		case 2:
+			goroutines.RunCalculateAMinMax()
+		}
+
 	default:
 
 		fmt.Println("This homework is not ready yet.")
 	}
-	
+
 }
