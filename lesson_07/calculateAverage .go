@@ -8,7 +8,7 @@ import (
 func RunCalculateAverage () {
 	fmt.Println("Start")
 
-	var intCh chan int = make(chan int, 3)
+	var intCh chan int = make(chan int)
 	var floatCh chan float64 = make(chan float64, 1)
 	var quit chan bool = make(chan bool, 1)
 

@@ -7,18 +7,16 @@ import (
 
 func RunCalculateAMinMax() {
 	rng := 100
-
-	numbChannel := make(chan int, 5)
-	quit := make(chan bool)
+	numbChannel := make(chan int)
 	endProgram := make(chan bool)
 
-	go randomNumbersFromRange(rng, numbChannel, quit, endProgram)
-	go findMinMax(numbChannel, quit)
+	go randomNumbersFromRange(rng, numbChannel, endProgram)
+	go findMinMax(numbChannel)
 
 	<-endProgram
 }
 
-func randomNumbersFromRange(rng int, numbChannel chan int, quit chan bool, endProgram chan bool) {
+func randomNumbersFromRange(rng int, numbChannel chan int, endProgram chan bool) {
 
 	for i := 0; i < 5; i++ {
 		randNumb := rand.Intn(rng)
@@ -26,18 +24,14 @@ func randomNumbersFromRange(rng int, numbChannel chan int, quit chan bool, endPr
 		numbChannel <- randNumb
 	}
 
-	for closed := range quit {
-		if closed {
-			min, max := <-numbChannel, <-numbChannel
-			fmt.Println("Min:", min, "Max:", max)
-			close(numbChannel)
-			close(quit)
-		}
-	}
+	min, max := <-numbChannel, <-numbChannel
+	
+	fmt.Println("Min:", min, "Max:", max)
+	close(numbChannel)
 	endProgram <- true
 }
 
-func findMinMax(numbChannel chan int, quit chan bool) {
+func findMinMax(numbChannel chan int) {
 
 	var slice []int
 	for i := 0; i < 5; i++ {
@@ -55,8 +49,6 @@ func findMinMax(numbChannel chan int, quit chan bool) {
 		}
 	}
 
-	quit <- true
-	
 	numbChannel <- min
 	numbChannel <- max
 }
