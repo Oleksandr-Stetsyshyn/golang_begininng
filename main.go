@@ -9,11 +9,13 @@ import (
 	postOffice "golang_beginning/lesson_06/post"
 	vehicle "golang_beginning/lesson_06/vehicle"
 	"golang_beginning/lesson_07"
+	gamers "golang_beginning/lesson_08/gamers"
+	shop "golang_beginning/lesson_08/shop"
 )
 
 func main() {
-	var runLessonNumber int = 7
-	fmt.Println("Please select a homework number: ")
+	var runLessonNumber int = 8
+	// fmt.Println("Please select a homework number: ")
 	// fmt.Println("1. Hello world")
 	// fmt.Println("2. Structs")
 	// fmt.Println("3. Control Statements and Loops")
@@ -21,7 +23,6 @@ func main() {
 	// fmt.Println("5. Maps")
 	// fmt.Println("6. Interfaces")
 	// fmt.Println("7. Goroutines")
-
 	// fmt.Scanln(&runLessonNumber)
 	fmt.Print("\033[H\033[2J")
 	switch runLessonNumber {
@@ -71,9 +72,21 @@ func main() {
 		case 2:
 			goroutines.RunCalculateAMinMax()
 		}
+	case 8:
+		var selectTask int
+		fmt.Println("Select task rom homework 8")
+		fmt.Println("1. Shop")
+		fmt.Println("2. Gamers")
+		fmt.Scanln(&selectTask)
+
+		switch selectTask {
+		case 1:
+			shop.Shop()
+		case 2:
+			gamers.Game()
+		}
 
 	default:
-
 		fmt.Println("This homework is not ready yet.")
 	}
 
