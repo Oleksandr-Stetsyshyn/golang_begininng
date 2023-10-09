@@ -11,10 +11,12 @@ import (
 	"golang_beginning/lesson_07"
 	gamers "golang_beginning/lesson_08/gamers"
 	shop "golang_beginning/lesson_08/shop"
+	school "golang_beginning/lesson_09/school"
+	todoList "golang_beginning/lesson_09/todoList"
 )
 
 func main() {
-	var runLessonNumber int = 8
+	var runLessonNumber int = 9
 	// fmt.Println("Please select a homework number: ")
 	// fmt.Println("1. Hello world")
 	// fmt.Println("2. Structs")
@@ -84,6 +86,19 @@ func main() {
 			shop.Shop()
 		case 2:
 			gamers.Game()
+		}
+
+	case 9:
+		var selectTask int
+		fmt.Println("Select task rom homework 9")
+		fmt.Println("1. Todo list")
+		fmt.Println("2. School")
+		fmt.Scanln(&selectTask)
+		switch selectTask {
+		case 1:
+			todoList.Main()
+		case 2:
+			school.Main()
 		}
 
 	default:
