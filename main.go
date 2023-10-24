@@ -1,6 +1,7 @@
 package main
 
 import (
+	// "flag"
 	"fmt"
 	"golang_beginning/lesson_02"
 	"golang_beginning/lesson_03"
@@ -13,23 +14,24 @@ import (
 	shop "golang_beginning/lesson_08/shop"
 	school "golang_beginning/lesson_09/school"
 	todoList "golang_beginning/lesson_09/todoList"
-
 	"golang_beginning/lesson_10/translator"
 	"golang_beginning/lesson_10/weather"
+	"golang_beginning/lesson_11/numbers"
+	"golang_beginning/lesson_11/words"
+	"golang_beginning/lesson_12"
 )
 
 func main() {
-	var runLessonNumber int = 10
-	// fmt.Println("Please select a homework number: ")
-	// fmt.Println("1. Hello world")
-	// fmt.Println("2. Structs")
-	// fmt.Println("3. Control Statements and Loops")
-	// fmt.Println("4. Arrays and slices")
-	// fmt.Println("5. Maps")
-	// fmt.Println("6. Interfaces")
-	// fmt.Println("7. Goroutines")
-	// fmt.Scanln(&runLessonNumber)
-	fmt.Print("\033[H\033[2J")
+	// go run main.go -lesson=11 -task=1
+	var runLessonNumber int = 12
+	// fmt.Print("\033[H\033[2J")
+	// flag.IntVar(&runLessonNumber, "lesson", 11, "Select a homework number")
+
+	var selectTask int = 0
+	// flag.IntVar(&selectTask, "task", 0, "Select a task number")
+
+	// flag.Parse()
+
 	switch runLessonNumber {
 	case 1:
 		fmt.Println("Hello world!")
@@ -38,27 +40,14 @@ func main() {
 	case 3:
 		game.Game()
 	case 4:
-		{
-			var selectTask int
-			fmt.Println("Select task rom homework 4")
-			fmt.Println("1. Text searcher")
-			fmt.Println("2. Calculate grade")
-			fmt.Scanln(&selectTask)
-			if selectTask == 1 {
-				arraysAndSlices.TextSearcher()
-			} else {
-				arraysAndSlices.InputAndCalculateGrade()
-			}
+		if selectTask == 1 {
+			arraysAndSlices.TextSearcher()
+		} else {
+			arraysAndSlices.InputAndCalculateGrade()
 		}
 	case 5:
 		ticTacToe.StartGame()
 	case 6:
-		var selectTask int
-		fmt.Println("Select task rom homework 6")
-		fmt.Println("1. Post office")
-		fmt.Println("2. Vehicle")
-		fmt.Scanln(&selectTask)
-
 		switch selectTask {
 		case 1:
 			postOffice.Office()
@@ -66,11 +55,6 @@ func main() {
 			vehicle.GoToRoute()
 		}
 	case 7:
-		var selectTask int
-		fmt.Println("Select task rom homework 7")
-		fmt.Println("1. Calculate average")
-		fmt.Println("2. Calculate min and max")
-		fmt.Scanln(&selectTask)
 		switch selectTask {
 		case 1:
 			goroutines.RunCalculateAverage()
@@ -78,12 +62,6 @@ func main() {
 			goroutines.RunCalculateAMinMax()
 		}
 	case 8:
-		var selectTask int
-		fmt.Println("Select task rom homework 8")
-		fmt.Println("1. Shop")
-		fmt.Println("2. Gamers")
-		fmt.Scanln(&selectTask)
-
 		switch selectTask {
 		case 1:
 			shop.Shop()
@@ -92,11 +70,6 @@ func main() {
 		}
 
 	case 9:
-		var selectTask int
-		fmt.Println("Select task rom homework 9")
-		fmt.Println("1. Todo list")
-		fmt.Println("2. School")
-		fmt.Scanln(&selectTask)
 		switch selectTask {
 		case 1:
 			todoList.Main()
@@ -104,12 +77,6 @@ func main() {
 			school.Main()
 		}
 	case 10:
-		var selectTask int
-		fmt.Println("Select task rom homework 10")
-		fmt.Println("1. weather")
-		fmt.Println("2. translator")
-		fmt.Scanln(&selectTask)
-
 		switch selectTask {
 		case 1:
 			weather.Main()
@@ -117,6 +84,15 @@ func main() {
 			translator.Main()
 		}
 
+	case 11:
+		switch selectTask {
+		case 1:
+			words.Main()
+		case 2:
+			numbers.Main()
+		}
+	case 12:
+		mainTextProcessor.Main()
 	default:
 		fmt.Println("This homework is not ready yet.")
 	}
