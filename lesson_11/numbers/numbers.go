@@ -19,7 +19,6 @@ func Main() {
 		}
 	}
 
-
 	str := string(content)
 	matches := regexp.MustCompile(`\(?(\d{3})\)?[ .-]?(\d{3})[ .-]?(\d{4})`).FindAllStringSubmatch(str, -1)
 

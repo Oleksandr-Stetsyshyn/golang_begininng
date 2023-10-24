@@ -1,15 +1,15 @@
 package main
 
 import (
-	// "flag"
+	"flag"
 	"fmt"
-	"golang_beginning/lesson_02"
-	"golang_beginning/lesson_03"
-	"golang_beginning/lesson_04"
-	"golang_beginning/lesson_05"
+	zoo "golang_beginning/lesson_02"
+	game "golang_beginning/lesson_03"
+	arraysAndSlices "golang_beginning/lesson_04"
+	ticTacToe "golang_beginning/lesson_05"
 	postOffice "golang_beginning/lesson_06/post"
 	vehicle "golang_beginning/lesson_06/vehicle"
-	"golang_beginning/lesson_07"
+	goroutines "golang_beginning/lesson_07"
 	gamers "golang_beginning/lesson_08/gamers"
 	shop "golang_beginning/lesson_08/shop"
 	school "golang_beginning/lesson_09/school"
@@ -18,19 +18,19 @@ import (
 	"golang_beginning/lesson_10/weather"
 	"golang_beginning/lesson_11/numbers"
 	"golang_beginning/lesson_11/words"
-	"golang_beginning/lesson_12"
+	mainTextProcessor "golang_beginning/lesson_12"
 )
 
 func main() {
 	// go run main.go -lesson=11 -task=1
-	var runLessonNumber int = 12
-	// fmt.Print("\033[H\033[2J")
-	// flag.IntVar(&runLessonNumber, "lesson", 11, "Select a homework number")
+	var runLessonNumber int = 11
+	fmt.Print("\033[H\033[2J")
+	flag.IntVar(&runLessonNumber, "lesson", 11, "Select a homework number")
 
-	var selectTask int = 0
-	// flag.IntVar(&selectTask, "task", 0, "Select a task number")
+	var selectTask int = 2
+	flag.IntVar(&selectTask, "task", 0, "Select a task number")
 
-	// flag.Parse()
+	flag.Parse()
 
 	switch runLessonNumber {
 	case 1:
@@ -87,9 +87,9 @@ func main() {
 	case 11:
 		switch selectTask {
 		case 1:
-			words.Main()
-		case 2:
 			numbers.Main()
+		case 2:
+			words.Main()
 		}
 	case 12:
 		mainTextProcessor.Main()
