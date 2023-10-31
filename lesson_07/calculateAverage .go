@@ -5,7 +5,7 @@ import (
 	"math/rand"
 )
 
-func RunCalculateAverage () {
+func RunCalculateAverage() {
 	fmt.Println("Start")
 
 	var intCh chan int = make(chan int)
@@ -17,7 +17,7 @@ func RunCalculateAverage () {
 	go printAverage(floatCh, quit)
 
 	<-quit
-	
+
 	fmt.Println("The End")
 }
 
@@ -41,6 +41,7 @@ func calculateAverage(intCh chan int, floatCh chan float64) {
 		sum += num
 	}
 	avg := float64(sum) / float64(len(slice))
+
 	floatCh <- avg
 }
 

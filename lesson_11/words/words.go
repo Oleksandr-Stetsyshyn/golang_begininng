@@ -23,6 +23,7 @@ func Main() {
 	matches1 := re1.FindAllString(str, -1)
 
 	fmt.Println("Words that start with a vowel and end with a consonant:")
+
 	for _, match := range matches1 {
 		fmt.Println(match)
 	}
