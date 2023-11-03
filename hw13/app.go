@@ -1,4 +1,4 @@
-package fileOrganaizer
+package fileOrganizer
 
 import (
 	"flag"
@@ -8,7 +8,7 @@ import (
 func Main() {
 	// go run . -operation=Create -Path="./hw13/files/" -name="text.txt"
 	// go run . -operation=Move -Path="./hw13/files/" -name="text.txt" -newPath="./hw13/files/new/"
-	var filesData = fileOrganaizer.PathFilesData{}
+	var filesData = fileOrganizer.PathFilesData{}
 	var operation string
 
 	flag.StringVar(&operation, "operation", "Create", "Operation to perform: Delete, Create, Copy, Move, Rename")
@@ -23,7 +23,7 @@ func Main() {
 	flag.StringVar(&filesData.NamePattern, "pattern", ".*_", "Regular expression pattern for file names")
 	flag.Parse()
 
-	selectedOp := &fileOrganaizer.SelectedOperation{}
+	selectedOp := &fileOrganizer.SelectedOperation{}
 	selectedOp.SetOperation(operation)
 	selectedOp.ExecuteOperation(filesData)
 }

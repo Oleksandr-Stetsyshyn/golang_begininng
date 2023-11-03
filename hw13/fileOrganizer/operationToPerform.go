@@ -1,31 +1,31 @@
-package fileOrganaizer
+package fileOrganizer
 
 import "fmt"
 
-type OperationToPerform interface {
-	Perform(pahtName PathFilesData)
+type operationToPerform interface {
+	Perform(pathName PathFilesData)
 }
 
 type SelectedOperation struct {
-	operation OperationToPerform
+	operation operationToPerform
 }
 
 func (sp *SelectedOperation) SetOperation(operation string) {
-	switch operation {
-	case "Delete":
-		sp.operation = &Delete{}
-	case "Create":
-		sp.operation = &Create{}
-	case "Copy":
-		sp.operation = &Copy{}
-	case "Move":
-		sp.operation = &Move{}
-	case "Rename":
-		sp.operation = &Rename{}
-	default:
+	operations := map[string]operationToPerform{
+		"Delete": &Delete{},
+		"Create": &Create{},
+		"Copy":   &Copy{},
+		"Move":   &Move{},
+		"Rename": &Rename{},
+	}
+
+	op, ok := operations[operation]
+	if !ok {
 		fmt.Println("Invalid operation")
 		return
 	}
+
+	sp.operation = op
 }
 
 func (sp *SelectedOperation) ExecuteOperation(filesData PathFilesData) {

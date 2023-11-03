@@ -1,4 +1,4 @@
-package fileOrganaizer
+package fileOrganizer
 
 import "fmt"
 
