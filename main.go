@@ -4,6 +4,7 @@ import (
 	// "flag"
 	"fmt"
 	"golang_beginning/hw13"
+	"golang_beginning/hw14"
 	zoo "golang_beginning/lesson_02"
 	game "golang_beginning/lesson_03"
 	arraysAndSlices "golang_beginning/lesson_04"
@@ -24,7 +25,7 @@ import (
 
 func main() {
 	// go run main.go -lesson=13 -task=1
-	var runLessonNumber int = 13
+	var runLessonNumber int = 14
 	// fmt.Print("\033[H\033[2J")
 	// flag.IntVar(&runLessonNumber, "lesson", 11, "Select a homework number")
 
@@ -94,7 +95,9 @@ func main() {
 	case 12:
 		mainTextProcessor.Main()
 	case 13:
-		fileOrganaizer.Main()
+		fileOrganizer.Main()
+	case 14:
+		mwcRestAPI.Main()
 	default:
 		fmt.Println("This homework is not ready yet.")
 	}
