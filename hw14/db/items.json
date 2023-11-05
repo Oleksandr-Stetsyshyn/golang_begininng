@@ -1,110 +1,37 @@
 [
  {
   "id": "1",
-  "value": "Item 1"
+  "name": "Handmade Birthday Card",
+  "description": "A beautiful handmade card with a birthday theme. Made with high-quality paper and decorated with a cute birthday cake design.",
+  "price": 5.99,
+  "category": "Handmade Cards"
  },
  {
   "id": "2",
-  "value": "Item 2"
+  "name": "Handmade Christmas Card",
+  "description": "A festive handmade card perfect for the Christmas season. Features a charming Christmas tree design.",
+  "price": 6.99,
+  "category": "Handmade Cards"
  },
  {
   "id": "3",
-  "value": "Item 3"
+  "name": "Handmade Thank You Card",
+  "description": "A lovely handmade card to express your gratitude. Decorated with a delightful floral design.",
+  "price": 5.99,
+  "category": "Handmade Cards"
  },
  {
   "id": "4",
-  "value": "Item 4"
+  "name": "Handmade Anniversary Card",
+  "description": "A special handmade card for a special occasion. Features a heart design and made with love.",
+  "price": 7.99,
+  "category": "Handmade Cards"
  },
  {
   "id": "5",
-  "value": "Item 5"
- },
- {
-  "id": "6",
-  "value": "Item 6"
- },
- {
-  "id": "7",
-  "value": "Item 7"
- },
- {
-  "id": "8",
-  "value": "Item 8"
- },
- {
-  "id": "9",
-  "value": "Item 9"
- },
- {
-  "id": "10",
-  "value": "Item 10"
- },
- {
-  "id": "11",
-  "value": "Item 11"
- },
- {
-  "id": "12",
-  "value": "Item 12"
- },
- {
-  "id": "13",
-  "value": "Item 13"
- },
- {
-  "id": "14",
-  "value": "Item 14"
- },
- {
-  "id": "15",
-  "value": "Item 15"
- },
- {
-  "id": "16",
-  "value": "Item 16"
- },
- {
-  "id": "17",
-  "value": "Item 17"
- },
- {
-  "id": "18",
-  "value": "Item 18"
- },
- {
-  "id": "19",
-  "value": "Item 19"
- },
- {
-  "id": "20",
-  "value": "Item 20"
- },
- {
-  "id": "21",
-  "value": "Item 21"
- },
- {
-  "id": "22",
-  "value": "Item 22"
- },
- {
-  "id": "23",
-  "value": "Item 23"
- },
- {
-  "id": "24",
-  "value": "Item 24"
- },
- {
-  "id": "26",
-  "value": "Item 26"
- },
- {
-  "id": "27",
-  "value": "Item 27"
- },
- {
-  "id": "28",
-  "value": "Item 28"
+  "name": "Handmade Valentine's Day Card",
+  "description": "A romantic handmade card for Valentine's Day. Decorated with a beautiful heart design.",
+  "price": 6.99,
+  "category": "Handmade Cards"
  }
 ]

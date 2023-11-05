@@ -1,4 +1,3 @@
-// models/item.go
 package models
 
 import (
@@ -8,14 +7,17 @@ import (
 )
 
 type Item struct {
-	ID    string `json:"id"`
-	Value string `json:"value"`
+    ID          string  `json:"id"`
+    Name        string  `json:"name"`
+    Description string  `json:"description"`
+    Price       float64 `json:"price"`
+    Category    string  `json:"category"`
 }
 
 var Items []Item
 
 func LoadItems() {
-	file, err := os.ReadFile("./hw14/db/items.json")
+	file, err := os.ReadFile("hw14/db/items.json")
 	if err != nil {
 		log.Fatal(err)
 	}
