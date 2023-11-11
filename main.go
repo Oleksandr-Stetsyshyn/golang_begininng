@@ -1,10 +1,13 @@
 package main
 
 import (
+	"flag"
 	// "flag"
 	"fmt"
 	"golang_beginning/hw13"
 	"golang_beginning/hw14"
+	"golang_beginning/hw15/observer"
+	"golang_beginning/hw15/pubsub"
 	zoo "golang_beginning/lesson_02"
 	game "golang_beginning/lesson_03"
 	arraysAndSlices "golang_beginning/lesson_04"
@@ -25,14 +28,14 @@ import (
 
 func main() {
 	// go run main.go -lesson=13 -task=1
-	var runLessonNumber int = 14
+	var runLessonNumber int
 	// fmt.Print("\033[H\033[2J")
-	// flag.IntVar(&runLessonNumber, "lesson", 11, "Select a homework number")
+	flag.IntVar(&runLessonNumber, "lesson", 15, "Select a homework number")
 
-	var selectTask int = 2
-	// flag.IntVar(&selectTask, "task", 0, "Select a task number")
+	var selectTask int
+	flag.IntVar(&selectTask, "task", 0, "Select a task number")
 
-	// flag.Parse()
+	flag.Parse()
 
 	switch runLessonNumber {
 	case 1:
@@ -98,6 +101,14 @@ func main() {
 		fileOrganizer.Main()
 	case 14:
 		mwcRestAPI.Main()
+	case 15:
+		switch selectTask {
+		case 1:
+			fileChangedEvent.Main()
+		case 2:
+			observer.Main()
+		}
+
 	default:
 		fmt.Println("This homework is not ready yet.")
 	}
