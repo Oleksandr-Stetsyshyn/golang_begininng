@@ -27,13 +27,13 @@ import (
 )
 
 func main() {
-	// go run main.go -lesson=13 -task=1
+	// go run . -lesson=15 -task=2
 	var runLessonNumber int
 	// fmt.Print("\033[H\033[2J")
 	flag.IntVar(&runLessonNumber, "lesson", 15, "Select a homework number")
 
 	var selectTask int
-	flag.IntVar(&selectTask, "task", 0, "Select a task number")
+	flag.IntVar(&selectTask, "task", 1, "Select a task number")
 
 	flag.Parse()
 

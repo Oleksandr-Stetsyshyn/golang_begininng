@@ -1,38 +1,17 @@
 package fileChangedEvent
 
-import (
-	"fmt"
-)
+import "fmt"
 
 func Main() {
-	publisher := &Publisher{}
+	broker := &Broker{EventChannel: make(chan string)}
+	publisher := &Publisher{Broker: broker, Path: "hw15/pubsub/files"}
 
-	Bob := &Subscriber{Events: make(chan string)}
-	publisher.Subscribe(Bob)
+	Bob := NewSubscriber("Bob")
+	broker.Subscribe(Bob)
 
-	go func() {
-		for event := range Bob.Events {
-			fmt.Println("Bob notified about:", event)
-		}
-	}()
+	Alice := NewSubscriber("Alice")
+	broker.Subscribe(Alice)
 
-	Earl := &Subscriber{Events: make(chan string)}
-	publisher.Subscribe(Earl)
-
-	go func() {
-		for event := range Earl.Events {
-			fmt.Println("Earl notified about:", event)
-		}
-	}()
-
-	Jon := &Subscriber{Events: make(chan string)}
-	publisher.Subscribe(Jon)
-
-	go func() {
-		for event := range Jon.Events {
-			fmt.Println("Jon notified about", event)
-		}
-	}()
-
-	FolderWatcher("hw15/pubsub/files", publisher)
+	go publisher.FolderWatcher()
+	fmt.Scanln()
 }

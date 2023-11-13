@@ -1,5 +1,9 @@
 package observer
 
 type PlayerObserverInterface interface {
-	update(string, string)
+	joinRoom(*GameRoom)
+	leaveRoom()
+	makeMove(string)
+	notify(string, string)
+	getName() string
 }

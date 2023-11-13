@@ -1,11 +1,13 @@
 package observer
 
 type GameRoom struct {
-	players []PlayerObserverInterface
+	levelName string
+	players   []PlayerObserverInterface
 }
 
 func (g *GameRoom) register(observer PlayerObserverInterface) {
 	g.players = append(g.players, observer)
+	g.notifyAll(observer.(*Player), "joined "+g.levelName)
 }
 
 func (g *GameRoom) deregister(observer PlayerObserverInterface) {
@@ -15,10 +17,12 @@ func (g *GameRoom) deregister(observer PlayerObserverInterface) {
 			break
 		}
 	}
+
+	g.notifyAll(observer.(*Player), "lived "+g.levelName)
 }
 
 func (g *GameRoom) notifyAll(p *Player, move string) {
 	for _, player := range g.players {
-		player.update(p.name, move)
+		player.notify(p.name, move)
 	}
 }
