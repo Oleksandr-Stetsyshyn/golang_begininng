@@ -1,0 +1,15 @@
+services:
+  mysql:
+    image: mysql:8
+    ports:
+      - 8080:3306
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./hw15/observer/init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: 1qazXSW@
+      MYSQL_DATABASE: playersdb
+
+volumes:
+  mysql-data:

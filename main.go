@@ -33,7 +33,7 @@ func main() {
 	flag.IntVar(&runLessonNumber, "lesson", 15, "Select a homework number")
 
 	var selectTask int
-	flag.IntVar(&selectTask, "task", 1, "Select a task number")
+	flag.IntVar(&selectTask, "task", 2, "Select a task number")
 
 	flag.Parse()
 

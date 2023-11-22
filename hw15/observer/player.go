@@ -3,8 +3,8 @@ package observer
 import "fmt"
 
 type Player struct {
-	name string
-	room *GameRoom
+	Name string
+	room *GameRoom `gorm:"-"`
 }
 
 func (p *Player) joinRoom(room *GameRoom) {
@@ -22,12 +22,12 @@ func (p *Player) makeMove(move string) {
 }
 
 func (p *Player) notify(player string, move string) {
-	if p.name == player {
+	if p.Name == player {
 		return
 	}
-	fmt.Println(p.name, "notified about", player, move)
+	fmt.Println(p.Name, "notified about", player, move)
 }
 
 func (p *Player) getName() string {
-	return p.name
+	return p.Name
 }

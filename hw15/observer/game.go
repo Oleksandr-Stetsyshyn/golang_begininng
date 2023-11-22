@@ -1,13 +1,14 @@
 package observer
 
 type GameRoom struct {
-	levelName string
-	players   []PlayerObserverInterface
+	ID        uint `gorm:"primarykey"`
+	LevelName string
+	players   []PlayerObserverInterface `gorm:"-"`
 }
 
 func (g *GameRoom) register(observer PlayerObserverInterface) {
 	g.players = append(g.players, observer)
-	g.notifyAll(observer.(*Player), "joined "+g.levelName)
+	g.notifyAll(observer.(*Player), "joined "+g.LevelName)
 }
 
 func (g *GameRoom) deregister(observer PlayerObserverInterface) {
@@ -18,11 +19,11 @@ func (g *GameRoom) deregister(observer PlayerObserverInterface) {
 		}
 	}
 
-	g.notifyAll(observer.(*Player), "lived "+g.levelName)
+	g.notifyAll(observer.(*Player), "lived "+g.LevelName)
 }
 
 func (g *GameRoom) notifyAll(p *Player, move string) {
 	for _, player := range g.players {
-		player.notify(p.name, move)
+		player.notify(p.Name, move)
 	}
 }
