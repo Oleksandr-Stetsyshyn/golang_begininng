@@ -3,6 +3,9 @@ package observer
 import "fmt"
 
 func Main() {
+
+	redisState := NewRedisState()
+	
 	state := NewGormState(NewGormConnection())
 
 	gameRoom := &GameRoom{LevelName: "Level	777"}
@@ -12,7 +15,7 @@ func Main() {
 	player2 := &Player{Name: "Pasha"}
 	player3 := &Player{Name: "Bob"}
 
-	state.AddPlayers([]*Player{player1, player2, player3})
+	state.AddPlayers([]*Player{player1, player2, player3}, redisState)
 
 	player1.joinRoom(gameRoom)
 	player2.joinRoom(gameRoom)
@@ -23,13 +26,14 @@ func Main() {
 
 	player3.leaveRoom()
 
-	state.PrinlnAllPlayers()
-	state.PrinlnAllRooms()
+	state.PrinlnAllPlayers(redisState)
+	// state.PrinlnAllRooms()
 
-	state.DeleteAllUsers()
-	state.DeleteAllRooms()
+	// state.DeleteAllUsers()
+	// state.DeleteAllRooms()
+	// redisState.RedisDeleteAllPlayers()	
 
 	fmt.Println("After delete")
-	state.PrinlnAllPlayers()
-	state.PrinlnAllRooms()
+	state.PrinlnAllPlayers(redisState)
+	// state.PrinlnAllRooms()
 }

@@ -2,6 +2,7 @@ package observer
 
 import (
 	"log"
+
 	nativeMysql "github.com/go-sql-driver/mysql"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -17,6 +18,7 @@ func NewGormConnection() *gorm.DB {
 		Passwd: "1qazXSW@",
 		Net:    "tcp",
 		Addr:   "0.0.0.0:3306",
+		// Addr:   "127.0.0.1:8083",
 		DBName: "playersdb",
 	}
 	gorm, err := gorm.Open(mysql.Open(cfg.FormatDSN()), &gorm.Config{})
@@ -39,16 +41,6 @@ func (g *GormState) ListPlayers() []Player {
 	return players
 }
 
-func (g *GormState) SavePlayer(p Player) Player {
-	saved := g.db.Save(&p)
-	if saved.Error != nil {
-		log.Println(saved.Error)
-		return p
-	}
-
-	return p
-}
-
 func (g *GormState) AddGameRoom(r *GameRoom) {
 	trx := g.db.Create(r)
 	if trx.Error != nil {
@@ -56,16 +48,10 @@ func (g *GormState) AddGameRoom(r *GameRoom) {
 	}
 }
 
-func (g *GormState) FindPlayers(playerName string) []Player {
-	found := []Player{}
-	trx := g.db.Where("Name LIKE ?", playerName).Find(&found)
-	if trx.Error != nil {
-		log.Println(trx.Error)
-	}
-	return found
-}
 
-func (g *GormState) AddPlayers(players []*Player) {
+func (g *GormState) AddPlayers(players []*Player, rs *RedisState) {
+	rs.RedisSavePlayers(players)
+
 	trx := g.db.Create(players)
 	if trx.Error != nil {
 		log.Println(trx.Error)
@@ -78,8 +64,14 @@ func NewGormState(db *gorm.DB) *GormState {
 	return &GormState{db}
 }
 
-func (g *GormState) PrinlnAllPlayers() {
-	players := g.ListPlayers()
+func (g *GormState) PrinlnAllPlayers(rs *RedisState) {
+	players := rs.RedisListPlayers()
+
+	if len(players) == 0 {
+		log.Println("redis is empty")
+		players = g.ListPlayers()
+	}
+
 	for _, p := range players {
 		log.Println(p)
 	}
@@ -100,16 +92,15 @@ func (g *GormState) PrinlnAllRooms() {
 }
 
 func (g *GormState) DeleteAllUsers() {
-    trx := g.db.Where(gorm.Expr("1")).Delete(&Player{})
-    if trx.Error != nil {
-        log.Println(trx.Error)
-    }
+	trx := g.db.Where(gorm.Expr("1")).Delete(&Player{})
+	if trx.Error != nil {
+		log.Println(trx.Error)
+	}
 }
 
 func (g *GormState) DeleteAllRooms() {
-    trx := g.db.Where(gorm.Expr("1")).Delete(&GameRoom{})
-    if trx.Error != nil {
-        log.Println(trx.Error)
-    }
+	trx := g.db.Where(gorm.Expr("1")).Delete(&GameRoom{})
+	if trx.Error != nil {
+		log.Println(trx.Error)
+	}
 }
-

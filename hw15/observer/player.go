@@ -3,6 +3,7 @@ package observer
 import "fmt"
 
 type Player struct {
+	ID     int    `gorm:"primarykey" json:"id"`
 	Name string
 	room *GameRoom `gorm:"-"`
 }

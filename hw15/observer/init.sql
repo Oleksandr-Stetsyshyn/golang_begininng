@@ -9,6 +9,8 @@ CREATE TABLE game_rooms (
 CREATE TABLE players (
     id int NOT NULL AUTO_INCREMENT,
     name varchar(30)
+
+    room_id int,
+    PRIMARY KEY (id),
+    FOREIGN KEY (room_id) REFERENCES game_rooms(id)
 );
-
-
