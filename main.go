@@ -2,12 +2,17 @@ package main
 
 import (
 	"flag"
+	"sync"
 	// "flag"
 	"fmt"
-	"golang_beginning/hw13"
-	"golang_beginning/hw14"
+	fileOrganizer "golang_beginning/hw13"
+	mwcRestAPI "golang_beginning/hw14"
 	"golang_beginning/hw15/observer"
-	"golang_beginning/hw15/pubsub"
+	fileChangedEvent "golang_beginning/hw15/pubsub"
+
+	rabbitmq "golang_beginning/hw16/chanel"
+	rabbitmqListener "golang_beginning/hw16/listener"
+
 	zoo "golang_beginning/lesson_02"
 	game "golang_beginning/lesson_03"
 	arraysAndSlices "golang_beginning/lesson_04"
@@ -30,10 +35,10 @@ func main() {
 	// go run . -lesson=15 -task=2
 	var runLessonNumber int
 	// fmt.Print("\033[H\033[2J")
-	flag.IntVar(&runLessonNumber, "lesson", 15, "Select a homework number")
+	flag.IntVar(&runLessonNumber, "lesson", 16, "Select a homework number")
 
 	var selectTask int
-	flag.IntVar(&selectTask, "task", 2, "Select a task number")
+	flag.IntVar(&selectTask, "task", 1, "Select a task number")
 
 	flag.Parse()
 
@@ -109,6 +114,27 @@ func main() {
 			observer.Main()
 		}
 
+	case 16:
+		var wg sync.WaitGroup
+
+		wg.Add(3) // We are going to run 3 goroutines
+
+		go func() {
+			defer wg.Done()
+			rabbitmq.Main()
+		}()
+
+		go func() {
+			defer wg.Done()
+			rabbitmq.Main()
+		}()
+
+		go func() {
+			defer wg.Done()
+			rabbitmqListener.Main()
+		}()
+
+		wg.Wait() // Wait for all goroutines to finish
 	default:
 		fmt.Println("This homework is not ready yet.")
 	}
