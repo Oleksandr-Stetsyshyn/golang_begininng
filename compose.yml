@@ -1,25 +1,14 @@
 services:
-  # mysql:
-  #   image: mysql:8
-  #   ports:
-  #     - 8083:3306
-  #   volumes:
-  #     - mysql-data:/var/lib/mysql
-  #     - ./hw15/observer/init.sql:/docker-entrypoint-initdb.d/init.sql
-  #   environment:
-  #     MYSQL_ROOT_PASSWORD: root
-  #     MYSQL_DATABASE: playersdb
-
-  # redis:
-  #   image: redis
-  #   ports:
-  #     - 6380:6379 
-
-  rabbitmq:
-      image: rabbitmq:3-management
-      ports:
-        - 5672:5672
-        - 15672:15672
+  mysql:
+    image: mysql:8
+    ports:
+      - 8083:3306
+    volumes:
+      - mysql-data:/var/lib/librarydb
+      - ./hw17/init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: librarydb
 
 volumes:
   mysql-data:

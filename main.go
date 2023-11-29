@@ -9,9 +9,9 @@ import (
 	mwcRestAPI "golang_beginning/hw14"
 	"golang_beginning/hw15/observer"
 	fileChangedEvent "golang_beginning/hw15/pubsub"
-
 	rabbitmq "golang_beginning/hw16/chanel"
 	rabbitmqListener "golang_beginning/hw16/listener"
+	library "golang_beginning/hw17"
 
 	zoo "golang_beginning/lesson_02"
 	game "golang_beginning/lesson_03"
@@ -35,7 +35,7 @@ func main() {
 	// go run . -lesson=15 -task=2
 	var runLessonNumber int
 	// fmt.Print("\033[H\033[2J")
-	flag.IntVar(&runLessonNumber, "lesson", 16, "Select a homework number")
+	flag.IntVar(&runLessonNumber, "lesson", 17, "Select a homework number")
 
 	var selectTask int
 	flag.IntVar(&selectTask, "task", 1, "Select a task number")
@@ -135,6 +135,8 @@ func main() {
 		}()
 
 		wg.Wait() // Wait for all goroutines to finish
+	case 17:
+		library.Main()
 	default:
 		fmt.Println("This homework is not ready yet.")
 	}
